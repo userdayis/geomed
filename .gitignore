@@ -1,0 +1,15 @@
+# DataMede - Deployment Ignore
+data/establecimientos_de_indus.geojson
+data/wgs84_establecimientos_de_indus.geojson
+data/estrato_socioeconomico.geojson
+data/atractivos_turisticos.geojson
+data/limite_barrio_vereda_cata.geojson
+data/limite_catastral_de_comun.geojson
+
+# Python
+__pycache__/
+.venv/
+.env
+
+# Streamlit
+.streamlit/

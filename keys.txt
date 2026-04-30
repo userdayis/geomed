@@ -1,0 +1,2 @@
+COMUNA:['OBJECTID', 'comuna', 'sector', 'nombre', 'fecha_sincronizacion', 'Shape_Length', 'Shape_Area']
+BARRIO:['OBJECTID', 'comuna', 'barrio', 'codigo', 'nombre_barrio', 'indicador_ur', 'sector', 'nombre_comuna', 'fecha_sincronizacion', 'Shape_Length', 'Shape_Area']

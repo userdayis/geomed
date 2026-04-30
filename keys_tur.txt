@@ -1,0 +1,2 @@
+ATRAC:['OBJECTID', 'imperdible', 'cod_comuna', 'cod', 'nombre_sitio', 'tipo_atractivo', 'orden_visualizacion', 'direccion', 'sitio_web', 'nombre_comuna', 'cod_barrio', 'barrio', 'x_origen_nacional', 'y_origen_nacional', 'latitud', 'longitud', 'fecha_actualizacion']
+INFO:['OBJECTID', 'sitio', 'direccion', 'comuna_corregimiento', 'barrio_vereda', 'latitud', 'longitud', 'x_origen_nacional', 'y_origen_nacional']
