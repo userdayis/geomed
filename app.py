@@ -113,7 +113,6 @@ st.markdown("""
 
     /* Ocultar Menú superior, logo de GitHub y botón Deploy */
     #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
     footer {visibility: hidden;}
     .stDeployButton {display:none;}
     [data-testid="stToolbar"] {visibility: hidden !important;}
