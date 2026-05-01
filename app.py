@@ -753,5 +753,13 @@ def main():
         render_landing_page()
     else:
         render_dashboard()
+        
+    # Footer Global
+    st.markdown("""
+        <div style='text-align: center; margin-top: 50px; padding: 20px; color: #64748b; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05);'>
+            &copy; 2026 GeoMed Intelligence. Todos los derechos reservados.<br>
+            Hecho con ❤️ para el ecosistema tecnológico de Medellín.
+        </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__": main()
