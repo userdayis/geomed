@@ -340,8 +340,15 @@ def get_comuna_stats(df_comuna):
 def render_dashboard():
     col_logo, col_title = st.columns([1, 10])
     with col_logo:
-        # Usar un logo genérico o el emoji si el archivo no existe
-        st.markdown("## 🌍")
+        logo_path = "logo.png"
+        if os.path.exists(logo_path):
+            import base64
+            with open(logo_path, "rb") as image_file:
+                encoded_string = base64.b64encode(image_file.read()).decode()
+            st.markdown(f"<img src='data:image/png;base64,{encoded_string}' style='width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #01FF84; box-shadow: 0 0 10px rgba(1, 255, 132, 0.3); margin-top: 5px;'/>", unsafe_allow_html=True)
+        else:
+            # Emoji por defecto si no se encuentra el archivo
+            st.markdown("## 🌍")
     with col_title:
         st.markdown("<h1 style='margin-bottom:0;'>GeoMed Intelligence</h1>", unsafe_allow_html=True)
         st.markdown("<p style='color:#94A3B8; margin-top:0;'>Geointeligencia y Analítica para el Ecosistema de Medellín</p>", unsafe_allow_html=True)
@@ -691,9 +698,18 @@ def render_dashboard():
                         st.session_state.messages.append({"role": "assistant", "content": res_text})
 
 def render_landing_page():
-    st.markdown("""
+    logo_path = "logo.png"
+    if os.path.exists(logo_path):
+        import base64
+        with open(logo_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
+        logo_html = f"<img src='data:image/png;base64,{encoded_string}' style='width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #01FF84; margin-bottom: 20px; box-shadow: 0 0 25px rgba(1, 255, 132, 0.4);'/>"
+    else:
+        logo_html = "<div class='feature-icon'>🌍</div>"
+
+    st.markdown(f"""
         <div class='hero-section'>
-            <div class='feature-icon'>🌍</div>
+            {logo_html}
             <h1 class='hero-title'>GeoMed Intelligence</h1>
             <p class='hero-subtitle'>La plataforma definitiva de Geointeligencia y Analítica para el Ecosistema de Medellín</p>
         </div>
