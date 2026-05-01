@@ -456,7 +456,17 @@ def main():
         with col_info:
             st.markdown("### 🗺️ Entorno Local")
             if st.session_state.comuna_id:
-                st.markdown(f"<div class='metric-card'>📍 <b>Comuna {st.session_state.comuna_id}</b><br>{cnombres.get(st.session_state.comuna_id, '')}</div>", unsafe_allow_html=True)
+                idx_local = opciones.index(st.session_state.comuna_id) if st.session_state.comuna_id in opciones else 0
+                nuevo_id = st.selectbox(
+                    "📍 Comuna Seleccionada:",
+                    opciones,
+                    format_func=lambda x: f"Comuna {x} - {cnombres.get(x, '')}",
+                    index=idx_local,
+                    key="selector_entorno_local"
+                )
+                if nuevo_id != st.session_state.comuna_id:
+                    st.session_state.comuna_id = nuevo_id
+                    st.rerun()
                 st.metric("Puntos Comerciales", f"{len(poi_comuna):,}")
                 st.info("💡 Usa el mapa para explorar la densidad comercial y nodos de transporte.")
 
