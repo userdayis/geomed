@@ -111,10 +111,10 @@ st.markdown("""
     /* Contenedor de IA con borde neón */
     .st-emotion-cache-12w0qpk { border-radius: 20px; } /* Streamlit internal class for containers */
 
-    /* Ocultar logo de GitHub en el menú superior (Streamlit Cloud) */
-    header[data-testid="stHeader"] a[href*="github.com"],
-    [data-testid="stToolbar"] a[href*="github.com"],
-    .stActionButton:has(a[href*="github.com"]) {
+    /* Ocultar toda la barra de herramientas superior derecha (Share, Star, GitHub, menú) */
+    [data-testid="stToolbar"],
+    .stAppToolbar,
+    #MainMenu {
         display: none !important;
     }
 </style>
