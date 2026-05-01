@@ -111,6 +111,47 @@ st.markdown("""
     /* Contenedor de IA con borde neón */
     .st-emotion-cache-12w0qpk { border-radius: 20px; } /* Streamlit internal class for containers */
 
+    /* Landing Page Styles */
+    .hero-section {
+        text-align: center;
+        padding: 4rem 2rem;
+        animation: fadeIn 1s ease-in-out;
+    }
+    .hero-title {
+        font-size: 4rem !important;
+        background: linear-gradient(90deg, #01FF84, #008751);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem;
+        color: #94A3B8;
+        margin-bottom: 3rem;
+    }
+    .feature-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        height: 100%;
+        transition: all 0.3s;
+    }
+    .feature-card:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(1, 255, 132, 0.3);
+        transform: translateY(-5px);
+    }
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
     /* Ocultar toda la barra de herramientas superior derecha (Share, Star, GitHub, menú) */
     [data-testid="stToolbar"],
     .stAppToolbar,
@@ -296,7 +337,7 @@ def get_comuna_stats(df_comuna):
     }
 
 # --- UI PRINCIPAL ---
-def main():
+def render_dashboard():
     col_logo, col_title = st.columns([1, 10])
     with col_logo:
         # Usar un logo genérico o el emoji si el archivo no existe
@@ -339,6 +380,11 @@ def main():
         
         if st.button("🧹 Limpiar Filtros", use_container_width=True):
             st.session_state.comuna_id = "10"
+            st.rerun()
+            
+        st.divider()
+        if st.button("🏠 Volver al Inicio", use_container_width=True, type="primary"):
+            st.session_state.app_mode = "landing"
             st.rerun()
 
     # Filtrar datos de la comuna seleccionada (ULTRA RÁPIDO con Pandas)
@@ -643,5 +689,69 @@ def main():
                                 break
                         st.markdown(res_text)
                         st.session_state.messages.append({"role": "assistant", "content": res_text})
+
+def render_landing_page():
+    st.markdown("""
+        <div class='hero-section'>
+            <div class='feature-icon'>🌍</div>
+            <h1 class='hero-title'>GeoMed Intelligence</h1>
+            <p class='hero-subtitle'>La plataforma definitiva de Geointeligencia y Analítica para el Ecosistema de Medellín</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown("""
+            <div class='feature-card'>
+                <div class='feature-icon'>🗺️</div>
+                <h3>Radar Territorial</h3>
+                <p style='color:#94A3B8;'>Explora comercios, turismo y movilidad de forma interactiva.</p>
+            </div>
+        """, unsafe_allow_html=True)
+        
+    with col2:
+        st.markdown("""
+            <div class='feature-card'>
+                <div class='feature-icon'>📊</div>
+                <h3>Análisis BI</h3>
+                <p style='color:#94A3B8;'>Métricas en tiempo real sobre la saturación y mix comercial.</p>
+            </div>
+        """, unsafe_allow_html=True)
+        
+    with col3:
+        st.markdown("""
+            <div class='feature-card'>
+                <div class='feature-icon'>🧪</div>
+                <h3>Simulador de Éxito</h3>
+                <p style='color:#94A3B8;'>Evalúa la viabilidad de tus ideas de negocio con algoritmos predictivos.</p>
+            </div>
+        """, unsafe_allow_html=True)
+        
+    with col4:
+        st.markdown("""
+            <div class='feature-card'>
+                <div class='feature-icon'>💡</div>
+                <h3>Consultoría IA</h3>
+                <p style='color:#94A3B8;'>Asistente virtual experto en emprendimiento territorial.</p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    
+    _, col_btn, _ = st.columns([1, 1, 1])
+    with col_btn:
+        if st.button("🚀 INGRESAR A GEOMED", use_container_width=True, type="primary"):
+            st.session_state.app_mode = "dashboard"
+            st.rerun()
+
+def main():
+    if 'app_mode' not in st.session_state:
+        st.session_state.app_mode = "landing"
+        
+    if st.session_state.app_mode == "landing":
+        render_landing_page()
+    else:
+        render_dashboard()
 
 if __name__ == "__main__": main()
