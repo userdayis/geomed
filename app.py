@@ -116,6 +116,20 @@ st.markdown("""
     footer {visibility: hidden;}
     .stDeployButton {display:none;}
     [data-testid="stToolbar"] {visibility: hidden !important;}
+
+    /* Forzar visibilidad y color del botón del panel lateral (flechita) */
+    [data-testid="collapsedControl"] {
+        display: flex !important;
+        visibility: visible !important;
+        z-index: 999999 !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 10px !important;
+        padding: 5px !important;
+    }
+    [data-testid="collapsedControl"] svg {
+        fill: #01FF84 !important;
+        color: #01FF84 !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
