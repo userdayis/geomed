@@ -117,6 +117,11 @@ st.markdown("""
     footer {visibility: hidden;}
     .stDeployButton {display:none;}
     [data-testid="stToolbar"] {visibility: hidden !important;}
+
+    /* Ocultar el "Viewer Badge" (logo flotante de Streamlit abajo a la derecha) */
+    div[class^="viewerBadge"] { display: none !important; }
+    .viewerBadge_container__1QSob { display: none !important; }
+    .viewerBadge_link__1S137 { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
