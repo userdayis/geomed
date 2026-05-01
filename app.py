@@ -345,7 +345,7 @@ def render_dashboard():
             import base64
             with open(logo_path, "rb") as image_file:
                 encoded_string = base64.b64encode(image_file.read()).decode()
-            st.markdown(f"<img src='data:image/jpeg;base64,{encoded_string}' style='width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #01FF84; box-shadow: 0 0 10px rgba(1, 255, 132, 0.3); margin-top: 5px;'/>", unsafe_allow_html=True)
+            st.markdown(f"<img src='data:image/jpeg;base64,{encoded_string}' style='width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #01FF84; box-shadow: 0 0 10px rgba(1, 255, 132, 0.3); margin-top: 5px;'/>", unsafe_allow_html=True)
         else:
             # Emoji por defecto si no se encuentra el archivo
             st.markdown("## 🌍")
