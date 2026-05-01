@@ -110,6 +110,13 @@ st.markdown("""
     
     /* Contenedor de IA con borde neón */
     .st-emotion-cache-12w0qpk { border-radius: 20px; } /* Streamlit internal class for containers */
+
+    /* Ocultar Menú superior, logo de GitHub y botón Deploy */
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stDeployButton {display:none;}
+    [data-testid="stToolbar"] {visibility: hidden !important;}
 </style>
 """, unsafe_allow_html=True)
 
